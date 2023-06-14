@@ -23,6 +23,7 @@ resource "aws_instance" "blog" {
   instance_type = var.instance_type
   
   vpc_security_droup_ids = [aws_security_group.blog.id]
+}
 
   tags = {
     Name = "HelloWorld"
