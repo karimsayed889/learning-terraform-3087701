@@ -21,13 +21,15 @@ data "aws_vpc" "default" {
 resource "aws_instance" "blog" {
   ami           = data.aws_ami.app_ami.id
   instance_type = var.instance_type
-  
-  vpc_security_droup_ids = [aws_security_group.blog.id]
-}
 
   tags = {
     Name = "HelloWorld"
   }
+
+  vpc_security_droup_ids = [aws_security_group.blog.id]
+}
+
+
 resource "aws_security_group" "blog" {
   name        = "blog"
   description = " Alllow http and https in. Allow everything out"
